@@ -21,8 +21,16 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getEmployeeQueryPage(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer pageSize) {
-        return page != null&& pageSize != null ? testEmployees.subList((page - 1 ) * pageSize, page * pageSize) : testEmployees;
+    public List<Employee> getEmployeeQueryPage(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer pageSize, @RequestParam(required = false) String gender) {
+        List<Employee> resultEmployees = null;
+        if(page != null&& pageSize != null && gender == null){
+            return testEmployees.subList((page - 1 ) * pageSize, page * pageSize);
+        }
+        if(gender != null) {
+            return testEmployees.stream().filter(e -> e.getGender().equals(gender)).collect(Collectors.toList());
+        }
+        return testEmployees;
+
     }
 
 
