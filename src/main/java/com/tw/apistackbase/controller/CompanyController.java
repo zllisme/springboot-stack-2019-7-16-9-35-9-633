@@ -46,6 +46,17 @@ public class CompanyController {
         return testCompanies;
     }
 
+    @DeleteMapping("/{id}")
+    public List<Company> deleteEmployee(@PathVariable int id) {
+        for(Company company : testCompanies) {
+            if(company.getId() == id) {
+                testCompanies.remove(company);
+                break;
+            }
+        }
+        return testCompanies;
+    }
+
 
 
 
