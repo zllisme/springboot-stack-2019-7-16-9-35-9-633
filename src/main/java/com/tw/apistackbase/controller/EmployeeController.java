@@ -42,11 +42,12 @@ public class EmployeeController {
     @PutMapping("/{id}")
     public List<Employee> updateEmployee(@PathVariable int id, @RequestBody Employee employee) {
         for(Employee each : testEmployees) {
-            if(employee.getId() == id) {
+            if(each.getId() == id) {
                 each.setAge(employee.getAge());
                 each.setGender(employee.getGender());
                 each.setId(id);
                 each.setName(employee.getName());
+                break;
             }
         }
         return testEmployees;

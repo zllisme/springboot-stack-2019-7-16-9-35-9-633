@@ -37,10 +37,11 @@ public class CompanyController {
     @PutMapping("/{id}")
     public List<Company> updateEmployee(@PathVariable int id, @RequestBody Company company) {
         for(Company each : testCompanies) {
-            if(company.getId() == id) {
+            if(each.getId() == id) {
                 each.setCompanyName(company.getCompanyName());
                 each.setEmployeesNumber(company.getEmployeesNumber());
                 each.setEmployees(company.getEmployees());
+                break;
             }
         }
         return testCompanies;
@@ -57,8 +58,7 @@ public class CompanyController {
         return testCompanies;
     }
 
-
-
-
-
+    public void setTestCompanies(List<Company> testCompanies) {
+        this.testCompanies = testCompanies;
+    }
 }
