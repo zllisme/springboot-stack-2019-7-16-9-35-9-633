@@ -29,6 +29,13 @@ public class CompanyController {
         return testCompanies;
     }
 
+    @GetMapping("/{id}/employees")
+    public List<Employee> getCompanyEmployee(@PathVariable int id) {
+        return testCompanies.stream().filter(e -> e.getId() == id).collect(Collectors.toList()).get(0).getEmployees();
+    }
+
+
+
 
 
 }
