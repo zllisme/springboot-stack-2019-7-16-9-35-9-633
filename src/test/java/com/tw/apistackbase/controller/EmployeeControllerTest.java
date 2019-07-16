@@ -86,4 +86,21 @@ public class EmployeeControllerTest {
                 .andExpect(jsonPath("$[0]['age']").value(22));
 
     }
+
+    @Test
+    public void should_return_added_employee_list_when_add_employee_given_requestbody_employee() throws Exception {
+        Employee employee = new Employee(4, 22, "Adson", "male");
+        String content = mapper.writeValueAsString(employee);
+        final RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/employees")
+                .content(content)
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[3]['id']").value(4))
+                .andExpect(jsonPath("$[3]['name']", is("Adson")))
+                .andExpect(jsonPath("$[3]['gender']", is("male")))
+                .andExpect(jsonPath("$[3]['age']").value(22));
+
+    }
 }
