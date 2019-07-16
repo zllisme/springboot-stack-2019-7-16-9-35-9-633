@@ -21,8 +21,13 @@ public class Employee {
 
     public static List<Employee> createTestEmployees() {
         Employee employee = new Employee(1, 12, "Jasmine", "female");
+        Employee employee2 = new Employee(2, 13, "Berio", "male");
+        Employee employee3 = new Employee(3, 14, "Ray", "male");
+
         ArrayList<Employee> employees = new ArrayList<>();
         employees.add(employee);
+        employees.add(employee2);
+        employees.add(employee3);
         return employees;
     }
 

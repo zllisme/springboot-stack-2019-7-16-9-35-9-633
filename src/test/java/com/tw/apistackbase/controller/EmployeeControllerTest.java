@@ -41,6 +41,15 @@ public class EmployeeControllerTest {
                 .andExpect(content().string(containsString("[{\"id\":1,\"age\":12,\"name\":\"Jasmine\",\"gender\":\"female\"}]")));
     }
 
+    @Test
+    public void should_return_employees_list_when_get_employees_given_page_and_page_size() throws Exception {
+        this.mockMvc.perform(get("/employees?page=1&pageSize=2"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(content().string(containsString("[{\"id\":1,\"age\":12,\"name\":\"Jasmine\",\"gender\":\"female\"}]")));
+    }
+
 
 
 
