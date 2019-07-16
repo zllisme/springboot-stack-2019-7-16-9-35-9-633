@@ -1,5 +1,6 @@
 package com.tw.apistackbase.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class EmployeeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    private ObjectMapper mapper = new ObjectMapper();
 
     @Test
     public void should_return_employees_list_when_get_employees_given_get_mapping() throws Exception {
