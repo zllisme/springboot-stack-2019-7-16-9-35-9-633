@@ -34,6 +34,18 @@ public class CompanyController {
         return testCompanies.stream().filter(e -> e.getId() == id).collect(Collectors.toList()).get(0).getEmployees();
     }
 
+    @PutMapping("/{id}")
+    public List<Company> updateEmployee(@PathVariable int id, @RequestBody Company company) {
+        for(Company each : testCompanies) {
+            if(company.getId() == id) {
+                each.setCompanyName(company.getCompanyName());
+                each.setEmployeesNumber(company.getEmployeesNumber());
+                each.setEmployees(company.getEmployees());
+            }
+        }
+        return testCompanies;
+    }
+
 
 
 
