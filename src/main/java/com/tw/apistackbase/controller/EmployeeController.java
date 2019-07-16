@@ -33,6 +33,12 @@ public class EmployeeController {
 
     }
 
+    @PostMapping
+    public List<Employee> addEmployee(@RequestBody Employee employee) {
+        testEmployees.add(employee);
+        return testEmployees;
+    }
+
 
 
 
