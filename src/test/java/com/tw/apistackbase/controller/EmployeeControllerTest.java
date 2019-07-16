@@ -103,4 +103,18 @@ public class EmployeeControllerTest {
                 .andExpect(jsonPath("$[3]['age']").value(22));
 
     }
+
+    @Test
+    public void should_return_after_delete_employee_list_when_delete_employee_given_id() throws Exception {
+        final RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/employees/1")
+                .contentType(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0]['id']").value(2))
+                .andExpect(jsonPath("$[0]['name']", is("Berio")))
+                .andExpect(jsonPath("$[0]['gender']", is("male")))
+                .andExpect(jsonPath("$[0]['age']").value(13));
+
+    }
 }
