@@ -1,4 +1,4 @@
-package com.tw.apistackbase.model;
+package com.tw.apistackbase.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

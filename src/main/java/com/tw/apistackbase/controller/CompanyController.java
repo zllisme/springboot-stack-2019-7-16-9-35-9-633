@@ -23,6 +23,12 @@ public class CompanyController {
         return testCompanies.stream().filter(e -> e.getId() == id).collect(Collectors.toList()).get(0);
     }
 
+    @PostMapping
+    public List<Company> addCompany(@RequestBody Company company) {
+        testCompanies.add(company);
+        return testCompanies;
+    }
+
 
 
 }
